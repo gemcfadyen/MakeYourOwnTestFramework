@@ -17,11 +17,11 @@ class Player
   attr_reader :name
 end
 
-def assert_winner(winner, name)
+def assert_winner(winner, test_name)
   if !winner.winner?
     puts "!!!!!!! Expected #{winner.name} to win the game"
   else
-    puts name
+    puts test_name
   end
 end
 
