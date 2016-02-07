@@ -1,17 +1,7 @@
 puts "\n\n\n*** Running tests ***\n"
 
-class Jorgeena
-  def take(position)
 
-  end
-
-  def winner?
-    true
-  end
-end
-
-
-class Pawelek
+class Player
   def take(position)
 
   end
@@ -22,8 +12,8 @@ class Pawelek
 end
 
 jorgeena_wins = lambda { |name|
-  jorgeena = Jorgeena.new
-  pawelek = Pawelek.new
+  jorgeena = Player.new
+  pawelek = Player.new
 
   jorgeena.take(1)
   pawelek.take(2)
@@ -41,8 +31,8 @@ jorgeena_wins = lambda { |name|
 }
 
 pawelek_wins = lambda { |name|
-  jorgeena = Jorgeena.new
-  pawelek = Pawelek.new
+  jorgeena = Player.new
+  pawelek = Player.new
 
   pawelek.take(1)
   jorgeena.take(2)
