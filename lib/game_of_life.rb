@@ -1,5 +1,5 @@
 puts "\n\n\n*** Running tests ***\n"
-
+puts "--------------------------\n"
 
 class Player
   def initialize(name)
@@ -12,7 +12,7 @@ class Player
   end
 
   def winner?
-   moves.sort == [1,4,7]
+    moves.sort == [1,4,7]
   end
 
   attr_reader :name, :moves
@@ -64,7 +64,7 @@ draw = lambda { |name|
   pawelek.take(9)
   jorgeena.take(8);
 
- assert_draw(jorgeena, pawelek, name)
+  assert_draw(jorgeena, pawelek, name)
 }
 
 jorgeena_wins = lambda { |name|
