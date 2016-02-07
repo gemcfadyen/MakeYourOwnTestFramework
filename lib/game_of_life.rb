@@ -11,6 +11,14 @@ class Player
   end
 end
 
+def assert_winner(winner, name)
+  if !winner
+    puts "!!!!!!! Expected Jorgeena to win the game"
+  else
+    puts name
+  end
+end
+
 jorgeena_wins = lambda { |name|
   jorgeena = Player.new
   pawelek = Player.new
@@ -21,13 +29,7 @@ jorgeena_wins = lambda { |name|
   pawelek.take(3)
   jorgeena.take(7)
 
-  winner = jorgeena.winner?
-
-  if !winner
-    puts "!!!!!!! Expected Jorgeena to win the game"
-  else
-    puts name
-  end
+  assert_winner(jorgeena.winner?, name)
 }
 
 pawelek_wins = lambda { |name|
@@ -40,13 +42,7 @@ pawelek_wins = lambda { |name|
   jorgeena.take(3)
   pawelek.take(7)
 
-  winner = pawelek.winner?
-
-  if !winner
-    puts "!!!!!!! Expected Pawelek to win the game"
-  else
-    puts name
-  end
+  assert_winner(pawelek.winner?, name)
 }
 
 
