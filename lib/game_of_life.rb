@@ -4,24 +4,31 @@ puts "\n\n\n*** Running tests ***\n"
 class Player
   def initialize(name)
     @name = name
+    @moves = []
   end
 
-  def take(position)
-
+  def take(move)
+    moves << move
   end
 
   def winner?
-   true
+   moves.sort == [1,4,7]
   end
 
-  attr_reader :name
+  attr_reader :name, :moves
 end
 
-def assert_winner(winner, test_name)
+def assert_winner(winner, looser=nil, test_name)
   if !winner.winner?
     puts "!!!!!!! Expected #{winner.name} to win the game"
-  else
-    puts test_name
+  end
+  if looser.winner?
+    puts "!!!!!!! Expected #{looser.name} to loose the game"
+  end
+
+  if winner.winner? || !looser.winner?
+    puts "PASSED #{test_name}"
+    puts "--------------------------"
   end
 end
 
@@ -35,7 +42,7 @@ jorgeena_wins = lambda { |name|
   pawelek.take(3)
   jorgeena.take(7)
 
-  assert_winner(jorgeena, name)
+  assert_winner(jorgeena, pawelek, name)
 }
 
 pawelek_wins = lambda { |name|
@@ -48,7 +55,7 @@ pawelek_wins = lambda { |name|
   jorgeena.take(3)
   pawelek.take(7)
 
-  assert_winner(pawelek, name)
+  assert_winner(pawelek, jorgeena, name)
 }
 
 
