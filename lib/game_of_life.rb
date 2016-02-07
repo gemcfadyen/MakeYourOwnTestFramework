@@ -21,7 +21,7 @@ class Pawelek
   end
 end
 
-def jorgeena_wins
+jorgeena_wins = lambda { |name|
   jorgeena = Jorgeena.new
   pawelek = Pawelek.new
 
@@ -34,13 +34,13 @@ def jorgeena_wins
   winner = jorgeena.winner?
 
   if !winner
-    puts "Expected Jorgeena to win the game"
+    puts "!!!!!!! Expected Jorgeena to win the game"
   else
-    puts "TEST PASSED :D"
+    puts name
   end
-end
+}
 
-def pawelek_wins
+pawelek_wins = lambda { |name|
   jorgeena = Jorgeena.new
   pawelek = Pawelek.new
 
@@ -53,11 +53,16 @@ def pawelek_wins
   winner = pawelek.winner?
 
   if !winner
-    puts "Expected Pawelek to win the game"
+    puts "!!!!!!! Expected Pawelek to win the game"
   else
-    puts "TEST PASSED :D"
+    puts name
   end
+}
+
+
+def run_tests(name, test_one)
+  test_one.call name
 end
 
-jorgeena_wins
-pawelek_wins
+run_tests("pawelek_wins", pawelek_wins)
+run_tests("jorgeena_wins", jorgeena_wins)
