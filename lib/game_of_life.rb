@@ -2,26 +2,32 @@ puts "\n\n\n*** Running tests ***\n"
 
 
 class Player
+  def initialize(name)
+    @name = name
+  end
+
   def take(position)
 
   end
 
   def winner?
-    true
+   true
   end
+
+  attr_reader :name
 end
 
 def assert_winner(winner, name)
-  if !winner
-    puts "!!!!!!! Expected Jorgeena to win the game"
+  if !winner.winner?
+    puts "!!!!!!! Expected #{winner.name} to win the game"
   else
     puts name
   end
 end
 
 jorgeena_wins = lambda { |name|
-  jorgeena = Player.new
-  pawelek = Player.new
+  jorgeena = Player.new("Jorgeena")
+  pawelek = Player.new("Pawelek")
 
   jorgeena.take(1)
   pawelek.take(2)
@@ -29,12 +35,12 @@ jorgeena_wins = lambda { |name|
   pawelek.take(3)
   jorgeena.take(7)
 
-  assert_winner(jorgeena.winner?, name)
+  assert_winner(jorgeena, name)
 }
 
 pawelek_wins = lambda { |name|
-  jorgeena = Player.new
-  pawelek = Player.new
+  jorgeena = Player.new("Jorgeena")
+  pawelek = Player.new("Pawelek")
 
   pawelek.take(1)
   jorgeena.take(2)
@@ -42,7 +48,7 @@ pawelek_wins = lambda { |name|
   jorgeena.take(3)
   pawelek.take(7)
 
-  assert_winner(pawelek.winner?, name)
+  assert_winner(pawelek, name)
 }
 
 
