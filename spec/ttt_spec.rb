@@ -3,8 +3,8 @@ require_relative '../lib/ttt_with_testing_framework'
 puts "\n\n\n*** Running tests ***\n"
 puts "--------------------------\n"
 
-def assert_winner(winner, looser, test_name) 
-  if !winner.winner?  
+def assert_winner(winner, looser, test_name)
+  if !winner.winner?
     puts "!!!!!!! Expected #{winner.name} to win the game"
   end
   if looser.winner?
@@ -35,53 +35,52 @@ end
 
 
 draw = lambda { |name|
-  jorgeena = Player.new("Jorgeena")
-  pawelek = Player.new("Pawelek")
+  billy = Player.new("Billy")
+  paul = Player.new("Paul")
 
-  jorgeena.take(1)
-  pawelek.take(2)
-  jorgeena.take(3) 
-  pawelek.take(6) 
-  jorgeena.take(4)
-  pawelek.take(7)
-  jorgeena.take(5);
-  pawelek.take(9)
-  jorgeena.take(8);
+  billy.take(1)
+  paul.take(2)
+  billy.take(3)
+  paul.take(6)
+  billy.take(4)
+  paul.take(7)
+  billy.take(5);
+  paul.take(9)
+  billy.take(8);
 
-  assert_draw(jorgeena, pawelek, name)
+  assert_draw(billy, paul, name)
 }
 
-jorgeena_wins = lambda { |name|
-  jorgeena = Player.new("Jorgeena")
-  pawelek = Player.new("Pawelek")
+billy_wins = lambda { |name|
+  billy = Player.new("Billy")
+  paul = Player.new("Paul")
 
-  jorgeena.take(1)
-  pawelek.take(2)
-  jorgeena.take(4)
-  pawelek.take(3)
-  jorgeena.take(7)
+  billy.take(1)
+  paul.take(2)
+  billy.take(4)
+  paul.take(3)
+  billy.take(7)
 
-  assert_winner(jorgeena, pawelek, name)
+  assert_winner(billy, paul, name)
 }
 
-pawelek_wins = lambda { |name|
-  jorgeena = Player.new("Jorgeena")
-  pawelek = Player.new("Pawelek")
+paul_wins = lambda { |name|
+  billy = Player.new("billy")
+  paul = Player.new("paul")
 
-  pawelek.take(1)
-  jorgeena.take(2)
-  pawelek.take(4)
-  jorgeena.take(3)
-  pawelek.take(7)
+  paul.take(1)
+  billy.take(2)
+  paul.take(4)
+  billy.take(3)
+  paul.take(7)
 
-  assert_winner(pawelek, jorgeena, name)
+  assert_winner(paul, billy, name)
 }
-
 
 def run_test(name, test_one)
   test_one.call name
 end
 
-run_test("pawelek_wins", pawelek_wins)
-run_test("jorgeena_wins", jorgeena_wins)
+run_test("paul_wins", paul_wins)
+run_test("billy_wins", billy_wins)
 run_test("draw", draw)
